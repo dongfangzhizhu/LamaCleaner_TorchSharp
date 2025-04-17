@@ -1,4 +1,4 @@
-[English](README.md)
+[中文](README-zh.md)
 # LamaCleaner_TorchSharp
 
 ## Project Overview
