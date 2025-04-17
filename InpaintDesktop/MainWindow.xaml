@@ -1,0 +1,64 @@
+<Window x:Class="InpaintDesktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InpaintDesktop"
+        xmlns:localization="clr-namespace:InpaintDesktop.Localization"
+        mc:Ignorable="d"
+        Title="{localization:Translate WindowTitle}" Height="1200" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 图像编辑区域 -->
+        <Border Grid.Column="0" Background="#F0F0F0" Margin="10">
+            <ScrollViewer x:Name="ImageScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Canvas x:Name="ImageCanvas" Background="Transparent" 
+                        AllowDrop="True"
+                        DragEnter="ImageCanvas_DragEnter"
+                        Drop="ImageCanvas_Drop">
+                    <Image x:Name="MainImage" Stretch="None"/>
+                    <InkCanvas x:Name="MaskCanvas" Background="Transparent" Opacity="0.6"/>
+                </Canvas>
+            </ScrollViewer>
+        </Border>
+
+        <!-- 工具栏 -->
+        <StackPanel Grid.Column="1" Width="120" Margin="0,10,10,10" Background="#F8F8F8">
+            <Button x:Name="LoadImageButton" Content="{localization:Translate LoadImageButton}" Margin="5" Click="LoadImageButton_Click"/>
+            <Button x:Name="ClearButton" Content="{localization:Translate ClearButton}" Margin="5" Click="ClearButton_Click"/>
+            <Separator Margin="5"/>
+            
+            <TextBlock Text="{localization:Translate BrushSizeLabel}" Margin="5"/>
+            <Slider x:Name="BrushSizeSlider" Minimum="1" Maximum="100" Value="20" 
+                    Margin="5" ValueChanged="BrushSizeSlider_ValueChanged"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <Button x:Name="DecreaseBrushButton" Content="-" Width="25" Click="DecreaseBrushButton_Click"/>
+                <TextBlock x:Name="BrushSizeText" Text="20" Margin="10,0" VerticalAlignment="Center"/>
+                <Button x:Name="IncreaseBrushButton" Content="+" Width="25" Click="IncreaseBrushButton_Click"/>
+            </StackPanel>
+            
+            <ToggleButton x:Name="EraserToggle" Margin="5" Click="EraserToggle_Click">
+                <ToggleButton.Style>
+                    <Style TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+                        <Setter Property="Content" Value="{localization:Translate BrushState}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Content" Value="{localization:Translate EraserState}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ToggleButton.Style>
+            </ToggleButton>
+            <Separator Margin="5"/>
+            
+            <Button x:Name="InpaintButton" Content="{localization:Translate InpaintButton}" Margin="5" Click="InpaintButton_Click"/>
+            <Button x:Name="SaveButton" Content="{localization:Translate SaveButton}" Margin="5" Click="SaveButton_Click"/>
+            <Button x:Name="BatchInpaintButton" Content="{localization:Translate BatchInpaintButton}" ToolTip="{localization:Translate ToolTip_BatchInpaintButton}" Margin="5" Click="BatchInpaintButton_Click"/>
+            <ProgressBar x:Name="progressBar" Orientation="Vertical" Visibility="Hidden" Margin="5" Height="100" Width="20"/>
+        </StackPanel>
+    </Grid>
+</Window>

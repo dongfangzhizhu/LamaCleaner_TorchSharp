@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图像编辑器</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .canvas-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #imageCanvas {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .upload-text {
+            text-align: center;
+            color: #666;
+        }
+
+        .controls {
+            width: 200px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .brush-size {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .brush-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .brush-controls button {
+            padding: 5px 10px;
+            font-size: 16px;
+            font-weight: bold;
+            background: #6c757d;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        button.active {
+            background: #28a745;
+        }
+
+        .shortcut-hint {
+            font-size: 12px;
+            color: #666;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="canvas-container" id="dropZone">
+            <canvas id="imageCanvas"></canvas>
+            <div class="upload-text" id="uploadText">
+                点击或拖拽图片到此处上传<br>
+                <small>(快捷键: Ctrl + O)</small>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="uploadBtn">上传图片</button>
+            <button id="clearBtn">清空图片</button>
+            <div class="brush-size">
+                <label>画笔大小: <span id="brushSize">20</span>px</label>
+                <div class="brush-controls">
+                    <button id="decreaseBrush">-</button>
+                    <input type="range" id="brushSizeRange" min="1" max="100" value="20">
+                    <button id="increaseBrush">+</button>
+                </div>
+            </div>
+            <button id="eraserBtn">橡皮擦 (E)</button>
+            <button id="uploadMaskBtn">上传遮罩</button>
+            <button id="inpaintBtn">开始修复</button>
+            <button id="saveBtn">保存图片</button>
+            <div class="shortcut-hint">
+                快捷键说明：<br>
+                Ctrl + O: 上传图片<br>
+                [/]: 调整画笔大小<br>
+                E: 切换橡皮擦<br>
+                Enter: 开始修复
+            </div>
+        </div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    <input type="file" id="maskFileInput" accept="image/*" style="display: none;">
+    <script src="app.js"></script>
+</body>
+</html>

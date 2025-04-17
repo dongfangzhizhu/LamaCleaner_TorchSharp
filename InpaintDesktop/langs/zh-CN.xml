@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Localization language="Chinese (Simplified)" description="中文简体" cultureName="zh-CN">
+    <MainWindow>
+        <WindowTitle>图像修复工具</WindowTitle>
+        <LoadImageButton>加载图片</LoadImageButton>
+        <ClearButton>清空全部</ClearButton>
+        <BrushSizeLabel>画笔大小</BrushSizeLabel>
+        <BrushState>画笔模式</BrushState>
+        <EraserState>橡皮擦模式</EraserState>
+        <InpaintButton>修复</InpaintButton>
+		<SaveButton>保存图片</SaveButton>
+		<BatchInpaintButton>处理多张图片</BatchInpaintButton>
+        <!-- MessageBox Strings -->
+        <Error_Title>错误</Error_Title>
+        <Info_Title>信息</Info_Title>
+        <Error_LoadImageAndMaskFirst>请先加载图片并绘制遮罩。</Error_LoadImageAndMaskFirst>
+        <Error_InvalidImageFormat>无效的图片格式。</Error_InvalidImageFormat>
+        <Info_InpaintNotImplemented>修复已完成。</Info_InpaintNotImplemented>
+        <Info_NoImageToSave>没有可保存的图片。</Info_NoImageToSave>
+		<ToolTip_BatchInpaintButton>使用当前绘制的遮罩批量处理图片</ToolTip_BatchInpaintButton>
+    </MainWindow>
+</Localization>

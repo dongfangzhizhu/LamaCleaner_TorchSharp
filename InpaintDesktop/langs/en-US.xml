@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Localization language="English" description="English" cultureName="en-US">
+    <MainWindow>
+        <WindowTitle>Image Inpainting Tool</WindowTitle>
+        <LoadImageButton>Load Image</LoadImageButton>
+        <ClearButton>Clear All</ClearButton>
+        <BrushSizeLabel>Brush Size</BrushSizeLabel>
+        <BrushState>Brush Mode</BrushState>
+        <EraserState>Eraser Mode</EraserState>
+        <InpaintButton>Inpaint</InpaintButton>
+        <SaveButton>Save Image</SaveButton>
+		<BatchInpaintButton>Inpaint images</BatchInpaintButton>
+        <!-- MessageBox Strings -->
+        <Error_Title>Error</Error_Title>
+        <Info_Title>Info</Info_Title>
+        <Error_LoadImageAndMaskFirst>Please load an image and draw a mask first.</Error_LoadImageAndMaskFirst>
+        <Error_InvalidImageFormat>Invalid image format.</Error_InvalidImageFormat>
+        <Info_InpaintNotImplemented>Inpaint done.</Info_InpaintNotImplemented>
+        <Info_NoImageToSave>No image to save.</Info_NoImageToSave>
+		<ToolTip_BatchInpaintButton>Batch process images using the currently drawn mask.</ToolTip_BatchInpaintButton>
+	</MainWindow>
+</Localization>
